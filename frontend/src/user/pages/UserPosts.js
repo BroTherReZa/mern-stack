@@ -16,6 +16,12 @@ const posts=[{
         description:'post 2 description ... ',
         image:'',
         creator:'u2'
+    },{
+        id:'p3',
+        title:'post 3',
+        description:'post 3 description ... ',
+        image:'',
+        creator:'u2'
     }]
 const UserPosts = () =>{
     const userId = useParams().userId

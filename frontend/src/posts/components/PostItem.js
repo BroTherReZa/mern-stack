@@ -1,5 +1,6 @@
 import React from 'react'
 import './PostItem.css'
+import Button from '../../shared/components/FormElements/Button'
 
 const PostItem = props =>{
     return(
@@ -16,6 +17,7 @@ const PostItem = props =>{
                 </div>
                 <div>
                     <button>Delete</button>
+                    <Button>Remove</Button>
                 </div>
         </li>
     )
