@@ -1,12 +1,11 @@
 import React from 'react';
 import './Button.css'
 import {Link} from 'react-router-dom'
-import { checkPropTypes } from 'prop-types';
 
 const Button = props =>{
         if(props.href){
             return(
-                <a>
+                <a href={props.href}>
                     {props.children}
                 </a>
             )

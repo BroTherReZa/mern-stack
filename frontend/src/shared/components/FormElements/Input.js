@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import './Input.css'
+import { validate } from '../util/validators';
 
 const inputReducer =(state, action)=>{
     switch(action.type){
@@ -7,20 +8,35 @@ const inputReducer =(state, action)=>{
             return {
                 ...state,
                 value: action.val,
-                isValid: true
+                isValid: validate(action.val,action.validators)
             }
+        case 'BLUR':
+            return {
+                ...state,
+                isBlured: true
+            }
+        default:
+            return state 
+
     }
 }
 
 const Input = props =>{
     const [inputState, dispatch] = useReducer(inputReducer, {
-        value: '',
-        isValid: false
+        value: "",
+        isValid: false,
+        isBlured: false
     })
     const changeHandler = event =>{
         dispatch({
             type: 'CHANGE',
-            val: event.target.value
+            val: event.target.value,
+            validators: props.validators
+        })
+    }
+    const blurHandler = () => {
+        dispatch({
+            type: 'BLUR'
         })
     }
     const element = props.element === 'input'?(
@@ -30,6 +46,7 @@ const Input = props =>{
         placeholder={props.placeholder}
         onChange={changeHandler}
         value= {inputState.value}
+        onBlur={blurHandler}
         />
     ) : (
         <textarea
@@ -37,12 +54,16 @@ const Input = props =>{
         row={props.row || 3}
         onChange={changeHandler}
         value={inputState.value}
+        onBlur={blurHandler}
         />
     )
     return(
         <div className={`form-control`}>
             {element}
-            {!inputState.isValid && <p>{props.errorText}</p>}
+            {
+                !inputState.isValid && 
+                inputState.isBlured &&
+                <p>{props.errorText}</p>}
         </div>
     )
 }

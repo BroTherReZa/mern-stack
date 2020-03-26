@@ -1,6 +1,7 @@
 import React from 'react';
 import './NewPost.css'
 import Input from '../../shared/components/FormElements/Input';
+import { validatorRequire } from '../../shared/components/util/validators';
 
 const NewPost =() =>{
     return(
@@ -12,6 +13,7 @@ const NewPost =() =>{
                 type="text" 
                 placeholder="Enter post title ... "
                 errorText= "plese Enter a valid title "
+                validators={[validatorRequire]}
                  />
             </form>
         </div>
