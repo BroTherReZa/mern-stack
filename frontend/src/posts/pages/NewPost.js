@@ -7,7 +7,12 @@ const NewPost =() =>{
         <div>
             <h1>NewPost page </h1>
             <form>
-                <Input element="input" type="text" placeholder="Enter post title ... " />
+                <Input 
+                element="input" 
+                type="text" 
+                placeholder="Enter post title ... "
+                errorText= "plese Enter a valid title "
+                 />
             </form>
         </div>
     )
