@@ -1,0 +1,21 @@
+input {
+    width: 45%;
+    border-radius: 15px;
+    resize: vertical;
+    border: 1px solid #BBDEFB;
+    outline: 0;
+    margin: .8em;
+    padding: 10px;
+    font-family: 'Vazir-FD';
+}
+
+textarea {
+    width: 45%;
+    border-radius: 15px;
+    resize: vertical;
+    border: 1px solid #BBDEFB;
+    outline: 0;
+    margin: .8em;
+    padding: 10px;
+    font-family: 'Vazir-FD';
+}

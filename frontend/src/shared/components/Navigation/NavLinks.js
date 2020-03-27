@@ -9,26 +9,26 @@ const NavLinks = props =>{
         <div>
             <ul>
                 <li>
-                    <NavLink to="/">All Users</NavLink>
+                    <NavLink to="/">فهرست کاربران</NavLink>
                 </li>
                 {   
                     auth.isLoggedIn && (
                         <li>
-                            <NavLink to="/u1/posts">My Posts</NavLink>
+                            <NavLink to="/u1/posts">پست های من</NavLink>
                         </li>
                     )
                 }
                                 {   
                     auth.isLoggedIn && (
                         <li>
-                            <NavLink to="/posts/new">Create New Post </NavLink>
+                            <NavLink to="/posts/new">افزودن پست جدید</NavLink>
                         </li>
                     )
                 }
                 {
                     !auth.isLoggedIn && (
                         <li>
-                            <NavLink to="/auth">Authenticate</NavLink>
+                            <NavLink to="/auth">ورود و ثبت نام</NavLink>
                         </li>
                     )
                 }
@@ -37,7 +37,7 @@ const NavLinks = props =>{
                         <button
                             onClick={auth.logout}
                         >
-                            Logout
+                            خروج
                         </button>
                     </li>
                 )}

@@ -5,12 +5,12 @@ const Users =() =>{
     const users =[{
         id:'u1',
         name:'marmar',
-        image:'',
+        image:'../images/MarMar.jpeg',
         posts: 4
     },{
         id:'u2',
         name:'reza',
-        image:'',
+        image:'../images/BroTher.jpg',
         posts: 7
     }]
     return(

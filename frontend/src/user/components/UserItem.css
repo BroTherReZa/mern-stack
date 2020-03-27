@@ -1,0 +1,18 @@
+a {
+    color: #1565C0;
+    text-decoration: none;
+}
+
+.user-avatar img {
+    width: 25%;
+    border-radius: 50%;
+    border: 2px solid #90CAF9;
+}
+
+h2 {
+    font-size: 1.4em;
+}
+
+h3 {
+    font-size: 1em;
+}

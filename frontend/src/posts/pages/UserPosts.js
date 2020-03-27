@@ -8,19 +8,19 @@ const posts=[{
         id:'p1',
         title:'post 1',
         description:'post 1 description ... ',
-        image:'',
+        image:'../images/Backtrack_Br.jpg',
         creator:'u1'
     },{
         id:'p2',
         title:'post 2',
         description:'post 2 description ... ',
-        image:'',
+        image:'../images/Backtrack_Br2.jpg',
         creator:'u2'
     },{
         id:'p3',
         title:'post 3',
         description:'post 3 description ... ',
-        image:'',
+        image:'../images/Backtrack_Br.jpg',
         creator:'u2'
     }]
 const UserPosts = () =>{

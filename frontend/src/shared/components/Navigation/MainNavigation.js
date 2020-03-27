@@ -8,7 +8,7 @@ const MainNavigation = props =>{
     return(
         <MainHeader>
             <h1>
-                <Link to="/"> your posts </Link>
+                <Link to="/"> پروژه </Link>
             </h1>
             <nav>
                 <NavLinks/>

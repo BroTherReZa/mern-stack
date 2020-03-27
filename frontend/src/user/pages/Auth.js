@@ -47,7 +47,7 @@ const Auth = () => {
     }
     return (
         <div>
-            <h2>Login</h2>
+            <h2>ورود و ثبت نام</h2>
             <form onSubmit={authSubmitHandler}>
                 {!isLoginMode && 
                     <Input
@@ -82,13 +82,13 @@ const Auth = () => {
                     type="submit"
                     disabled={!formState.isValid}
                 >
-                    {isLoginMode ? 'Login' : 'Signup'}
+                    {isLoginMode ? 'ورود' : 'ثبت نام'}
                 </Button>
             </form>
             <Button 
             onClick={switchModeHandler}
             >
-                Swith to {!isLoginMode ? 'Login' : 'Signup'}
+                 {!isLoginMode ? 'ورود' : 'ثبت نام'}
             </Button>
         </div>
     )

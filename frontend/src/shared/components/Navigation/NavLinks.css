@@ -1,0 +1,9 @@
+.nav button {
+    background: none;
+    color: #FFFFFF;
+    border-radius: 15px;
+    outline: 0;
+    font-family: 'Vazir-FD';
+    border: none;
+    font-size: .9em;
+}

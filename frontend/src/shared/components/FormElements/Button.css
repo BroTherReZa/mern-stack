@@ -1,0 +1,17 @@
+.button {
+    width: 15%;
+    background: #2196f3;
+    color: #FFFFFF;
+    border-radius: 15px;
+    outline: 0;
+    padding: .8em;
+    margin: .3em;
+    font-family: 'Vazir-FD';
+    border: none;
+}
+
+.button:disabled {
+    background: #FFFFFF;
+    border: 1px solid #BDBDBD;
+    color: #BDBDBD;
+}
