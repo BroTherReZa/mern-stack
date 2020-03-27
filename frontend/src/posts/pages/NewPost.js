@@ -13,7 +13,7 @@ const NewPost =() =>{
                 type="text" 
                 placeholder="Enter post title ... "
                 errorText= "plese Enter a valid title "
-                validators={[validatorRequire]}
+                validators={[validatorRequire()]}
                  />
             </form>
         </div>
