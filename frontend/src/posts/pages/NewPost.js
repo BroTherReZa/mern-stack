@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewPost.css'
 import Input from '../../shared/components/FormElements/Input';
-import { validatorRequire } from '../../shared/components/util/validators';
+import { validatorRequire } from '../../shared/util/validators';
 import Button from '../../shared/components/FormElements/Button';
 import { useForm } from '../../shared/hooks/from-hook';
 

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 
 import './Auth.css'
 import Input from '../../shared/components/FormElements/Input'
-import { validatorRequire } from '../../shared/components/util/validators'
+import { validatorRequire } from '../../shared/util/validators'
 import { useForm } from '../../shared/hooks/from-hook'
 import Button from '../../shared/components/FormElements/Button'
 import { AuthContext } from '../../shared/context/auth-context'
