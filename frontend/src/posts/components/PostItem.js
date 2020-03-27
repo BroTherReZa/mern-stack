@@ -16,7 +16,6 @@ const PostItem = props =>{
                     <h4>{props.creatorId}</h4>
                 </div>
                 <div>
-                    <button>Delete</button>
                     <Button>Remove</Button>
                 </div>
         </li>

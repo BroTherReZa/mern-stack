@@ -1,6 +1,6 @@
 import React from 'react'
 import './UserPosts.css'
-import PostList from '../../posts/components/PostList'
+import PostList from '../components/PostList'
 import {useParams} from 'react-router-dom'
 
 

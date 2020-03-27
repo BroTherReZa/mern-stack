@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import Users from './user/pages/Users';
 import NewPost from './posts/pages/NewPost';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
-import UserPosts from './user/pages/UserPosts';
+import UserPosts from './posts/pages/UserPosts';
+import Auth from './user/pages/Auth';
 
 const App =()=>{
   return(
@@ -18,6 +19,9 @@ const App =()=>{
         </Route>
         <Route path="/posts/new" exact>
           <NewPost/>
+        </Route>
+        <Route path="/auth">
+          <Auth/>
         </Route>
         <Redirect to="/"/>
       </Switch>
