@@ -37,6 +37,9 @@ if(isLoggedIn){
       <Route path="/" exact>
         <Users/>
       </Route>
+      <Route path="/:userId/posts">
+              <UserPosts/>
+            </Route>
       <Route path="/auth">
         <Auth/>
       </Route>

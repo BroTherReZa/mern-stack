@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './PostItem.css'
 import Button from '../../shared/components/FormElements/Button'
+import { AuthContext } from '../../shared/context/auth-context'
 
 const PostItem = props =>{
+    const auth = useContext(AuthContext)
     return(
         <li>
             <div>
@@ -16,7 +18,10 @@ const PostItem = props =>{
                     <h4>{props.creatorId}</h4>
                 </div>
                 <div>
-                    <Button>Remove</Button>
+                    {
+                        auth.isLoggedIn &&
+                        <Button>Remove</Button>
+                    }
                 </div>
         </li>
     )
