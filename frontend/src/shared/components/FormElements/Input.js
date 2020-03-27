@@ -27,7 +27,11 @@ const Input = props =>{
         isValid: false,
         isBlured: false
     })
-    
+const { id, onInput } = props
+const { value, isValid } = inputState
+    useEffect(()=>{
+        onInput(id, value, isValid)
+    },[id, value, isValid, onInput])
     const changeHandler = event =>{
         dispatch({
             type: 'CHANGE',
@@ -53,6 +57,7 @@ const Input = props =>{
         <textarea
         id={props.id}
         row={props.row || 3}
+        placeholder={props.placeholder}
         onChange={changeHandler}
         value={inputState.value}
         onBlur={blurHandler}
