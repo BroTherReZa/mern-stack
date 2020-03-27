@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './Auth.css'
 import Input from '../../shared/components/FormElements/Input'
@@ -7,6 +7,7 @@ import { useForm } from '../../shared/hooks/from-hook'
 import Button from '../../shared/components/FormElements/Button'
 
 const Auth = () => {
+    const [isLoginMode, setIsLoginMode] = useState(true)
     const [formState, inputHandler] = useForm({
         email:{
             value: '',
@@ -17,6 +18,9 @@ const Auth = () => {
             isValid: false
         }
     }, false)
+    const switchModeHandler = () => {
+        setIsLoginMode(prevMode => !prevMode)
+    }
     const autSubmitHandler = event => {
         event.preventDefault()
         console.log(formState.inputs)
@@ -25,6 +29,17 @@ const Auth = () => {
         <div>
             <h2>Login</h2>
             <form onSubmit={autSubmitHandler}>
+                {!isLoginMode && 
+                    <Input
+                        id="name"
+                        type="text"
+                        element="input"
+                        placeholder="name"
+                        validators={[validatorRequire()]}
+                        errorText="Enter a valid name"
+                        onInput={inputHandler}
+                    />
+                }
                 <Input 
                 id="email"
                 type="email"
@@ -46,8 +61,15 @@ const Auth = () => {
                 <Button 
                     type="submit"
                     disabled={!formState.isValid}
-                >Login</Button>
+                >
+                    {isLoginMode ? 'Login' : 'Signup'}
+                </Button>
             </form>
+            <Button 
+            onClick={switchModeHandler}
+            >
+                Swith to {!isLoginMode ? 'Login' : 'Signup'}
+            </Button>
         </div>
     )
 }
