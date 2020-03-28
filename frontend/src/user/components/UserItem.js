@@ -10,13 +10,13 @@ const UserItem = props =>{
                     <img src={props.image} alt={props.name}/>
                 </div>
                 <div>
-                    <h2>{props.id}</h2>
+                    <p> شناسه : <span> {props.id} </span></p>
                 </div>
                 <div>
                     <h2>{props.name}</h2>
                 </div>
                 <div>
-                    <h2>{props.postCount}</h2>
+                <p> تعداد پست : <span> {props.postCount} </span></p>
                 </div>
             </Link>
         </li>

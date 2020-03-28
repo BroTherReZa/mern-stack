@@ -1,7 +1,31 @@
-ul {
+.userList {
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 2px 3px #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 65px;
+}
+.userList ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
     list-style: none;
 }
-img{
-    width: 200px;
-    height: 200px;
+.userList li {
+    width: 30%;
+    background-color: #cccccc;
+    border: 1px solid gray;
+    box-shadow: 0 2px 3px gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    box-sizing: border-box;
 }
+

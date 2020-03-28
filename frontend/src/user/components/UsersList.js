@@ -11,7 +11,7 @@ const UsersList = props =>{
         )
     }
     return(
-        <div className="center">
+        <div className="userList">
             <ul>
                 {
                     props.items.map(user=>{
