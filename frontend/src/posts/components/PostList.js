@@ -11,7 +11,7 @@ const PostList = props =>{
         )
     }
     return(
-        <div className="center">
+        <div className="postList">
             <ul>
                 {
                     props.items.map(post =>{

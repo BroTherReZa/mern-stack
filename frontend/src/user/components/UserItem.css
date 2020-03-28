@@ -1,19 +1,30 @@
-.user-avatar img {
-    width: 25%;
-    border-radius: 50%;
-    border: 2px solid #90CAF9;
-}
-
-h2 {
-    font-size: 1.4em;
-}
-
-span {
-    font-size: 1em;
-}
-a{
-    text-decoration: none;
-}
-li div {
+.userAvatar {
+    width: 30%;
+    border-left: 1px solid gray;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+}
+.userAvatar img {
+    width: 75%;
+    border-radius: 50%;
+    border: 2px solid gray;
+}
+.userName {
+    width: 30%;
+    padding: 10px;
+}
+.userInfo{
+    width: 40%;
+    padding: 10px;
+    display: block;
+}
+li a {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }

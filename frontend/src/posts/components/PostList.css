@@ -1,13 +1,40 @@
-.post img {
+.postList {
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 2px 3px #cccccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 65px;
+}
+.postList ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.postList li {
+    width: 48%;
+    margin: 5px;
+    background-color: #cccccc;
+    border: 1px solid gray;
+    box-shadow: 0 2px 3px gray;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+.postList li div {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+
+
+.postList img {
     width: 60%;
     border-radius: 3px;
     border: 2px solid #E0E0E0;
-}
-
-.post h2 {
-    color: #212121;
-}
-
-.post h3 {
-    color: #424242;
 }
