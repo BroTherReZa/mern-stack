@@ -6,7 +6,7 @@ const UserItem = props =>{
     return(
         <li>
             <Link to={`/${props.id}/posts`}>
-                <div>
+                <div className="user-avatar">
                     <img src={props.image} alt={props.name}/>
                 </div>
                 <div>

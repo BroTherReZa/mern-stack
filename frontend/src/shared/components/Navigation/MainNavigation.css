@@ -1,3 +1,15 @@
+.logo {
+    height: 100%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 35px;
+    width: 35px;
+}
+
+/*
 nav ul {
     list-style: none;
 }
@@ -11,3 +23,4 @@ nav a {
     padding: 1em;
     text-decoration: none;
 }
+*/

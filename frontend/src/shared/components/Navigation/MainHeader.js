@@ -3,7 +3,7 @@ import './MainHeader.css'
 
 const MainHeader = props =>{
     return(
-        <header>
+        <header className="header">
             {props.children}
         </header>
 

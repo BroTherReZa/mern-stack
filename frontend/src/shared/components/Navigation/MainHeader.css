@@ -1,6 +1,19 @@
-header {
+.header {
+    height: 50px;
     width: 100%;
-    background: #1565C0;
-    padding: .1em;
-    font-size: 1.1em;
+    background-color: #ffffff;
+    border-bottom: 1px solid #cccccc;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 90;
+    direction: rtl;
 }
+.header nav {
+    height: 100%;
+} 

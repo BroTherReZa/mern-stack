@@ -8,8 +8,11 @@ const NavLinks = props =>{
     return(
         <div>
             <ul>
+            <li>
+                    <NavLink to="/">صفحه اصلی</NavLink>
+                </li>
                 <li>
-                    <NavLink to="/">فهرست کاربران</NavLink>
+                    <NavLink to="/users">کاربران</NavLink>
                 </li>
                 {   
                     auth.isLoggedIn && (
@@ -25,22 +28,6 @@ const NavLinks = props =>{
                         </li>
                     )
                 }
-                {
-                    !auth.isLoggedIn && (
-                        <li>
-                            <NavLink to="/auth">ورود و ثبت نام</NavLink>
-                        </li>
-                    )
-                }
-                {auth.isLoggedIn && (
-                    <li>
-                        <button
-                            onClick={auth.logout}
-                        >
-                            خروج
-                        </button>
-                    </li>
-                )}
             </ul>
         </div>
     )

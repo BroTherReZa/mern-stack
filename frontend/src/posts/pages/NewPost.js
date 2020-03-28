@@ -22,8 +22,8 @@ const NewPost =() =>{
         console.log(fromState.inputs)
     }
     return(
-        <div>
-            <h1>NewPost page </h1>
+        <div className="newPost">
+            <h1>افزودن پست جدید</h1>
             <form onSubmit={postSubmitHandler}>
                 <Input 
                 id="title"
@@ -46,7 +46,7 @@ const NewPost =() =>{
                     type='submit'
                     disabled={!fromState.isValid}
                 >
-                    Add Post
+                    افزودن پست
                 </Button>
             </form>
 

@@ -36,6 +36,11 @@ if(isLoggedIn){
   routes = (
     <Switch>
       <Route path="/" exact>
+        <div className="center">
+          <h1>خوش آمدید ... </h1>
+        </div>
+      </Route>
+      <Route path="/users" exact>
         <Users/>
       </Route>
       <Route path="/:userId/posts">

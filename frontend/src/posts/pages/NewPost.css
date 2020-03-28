@@ -1,7 +1,37 @@
-.post {
-    display: block;
+.newPost {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 2px 3px #cccccc;
+    text-align: center;
+    margin-top: 65px;
 }
-
-.post h2 {
-    color: #212121;
+.newPost input {
+    display: block;
+    width: 80%;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    outline: none;
+    border-radius: 5px;
+    height: 35px;
+    padding: 20px;
+    margin: 20px auto;
+}
+.newPost textarea{
+    display: block;
+    width: 80%;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    height: 100px;
+    padding: 20px;
+    margin: auto;
+}
+.newPost button{
+    margin: 20px;
+}
+.newPost button:hover,
+.newPost button:active {
+    color: white;
+    background-color: #fa3f58;
 }
