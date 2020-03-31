@@ -26,14 +26,3 @@ nav li a:hover, nav li a:active,nav li a.active{
     cursor: pointer;
     color: #1d1b1bd1;
 }
-/*
-.nav button {
-    background: none;
-    color: #FFFFFF;
-    border-radius: 15px;
-    outline: 0;
-    font-family: 'Vazir-FD';
-    border: none;
-    font-size: .9em;
-}
-*/

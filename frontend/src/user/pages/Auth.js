@@ -46,7 +46,7 @@ const Auth = () => {
         auth.login()
     }
     return (
-        <div>
+        <div className="auth">
             <h2>ورود و ثبت نام</h2>
             <form onSubmit={authSubmitHandler}>
                 {!isLoginMode && 

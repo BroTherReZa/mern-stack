@@ -1,7 +1,8 @@
 .auth {
-    display: block;
-}
-
-.auth h2 {
-    color: #212121;
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 2px 3px #cccccc;
+    text-align: center;
+    margin-top: 65px;
 }

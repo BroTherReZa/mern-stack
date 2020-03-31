@@ -25,10 +25,11 @@
 }
 .postList li div {
     width: 25%;
-    display: flex;
+    display: block;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
+    padding:5px;
 }
 
 
