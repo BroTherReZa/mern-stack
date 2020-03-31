@@ -1,8 +1,9 @@
 const uuid = require('uuid/v4')
+const { validationResult } = require('express-validator')
 
 const HttpError = require('../models/http-error')
 
-const posts=[{
+let posts=[{
     id:'p1',
     title:'post 1',
     description:'post 1 description ... ',
@@ -43,6 +44,10 @@ const getPostByUserId = (req, res, next) => {
 }
 
 const createPost = (req, res, next) => {
+    const errors = validationResult(req)
+    if(!errors.isEmpty()) {
+        throw new HttpError('Invalid Inputs', 422)
+    }
     const {title, description, creator} = req.body
     const createdPost = {
         id: uuid(),
@@ -54,6 +59,13 @@ const createPost = (req, res, next) => {
     res.status(201).json({postsList: createdPost})
 }
 
+const deletePost = (req, res, next) => {
+    const postId = req.params.pid
+    loadedPosts = posts.filter( p => p.id !== postId)
+    res.status(200).json({ message: 'Post Deleted!'})
+}
+
 exports.getPostById = getPostById
 exports.getPostByUserId = getPostByUserId
 exports.createPost = createPost
+exports.deletePost = deletePost
