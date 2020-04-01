@@ -11,7 +11,10 @@ router.post('/',
     check('title')
         .not()
         .isEmpty(),
-    check('description').isLength({ min: 5 })
+    check('description').isLength({ min: 5 }),
+    check('creator')
+        .not()
+        .isEmpty()
 ],
 postsControllers.createPost)
 router.delete('/:pid', postsControllers.deletePost)

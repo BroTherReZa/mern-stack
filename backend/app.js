@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 const postRoutes = require('./routes/posts-routes')
 const userRoutes = require('./routes/users-routes')
 const HttpError = require('./models/http-error')
@@ -24,5 +25,13 @@ app.use((error, req, res, next) => {
 })
 
 
-
-app.listen(5000)
+mongoose
+    .connect('mongodb://127.0.0.1:27017/posts', { useNewUrlParser: true , useUnifiedTopology: true})
+    .then( () => {
+        app.listen(5000)
+        console.log('connected!')
+    })
+    .catch( err => {
+        console.log('connection failed!')
+        console.log(err)
+    })
