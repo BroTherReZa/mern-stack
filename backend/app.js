@@ -9,6 +9,13 @@ const HttpError = require('./models/http-error')
 const app = express()
 
 app.use(bodyParser.json())
+
+app.use((req, res, next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*')
+    res.setHeader('Access-Control-Allow-Headers','*')
+    res.setHeader('Access-Control-Allow-Methods','*')
+    next()
+})
 app.use('/api/posts',postRoutes)
 app.use('/api/users', userRoutes)
 
@@ -28,7 +35,7 @@ app.use((error, req, res, next) => {
 
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/posts', { useNewUrlParser: true , useUnifiedTopology: true})
+    .connect('mongodb://127.0.0.1:27017/mern')  //, { useNewUrlParser: true , useUnifiedTopology: true})
     .then( () => {
         app.listen(5000)
         console.log('connected!')
