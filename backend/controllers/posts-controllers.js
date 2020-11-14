@@ -1,25 +1,8 @@
-const uuid = require('uuid/v4')
 const { validationResult } = require('express-validator')
 
 const HttpError = require('../models/http-error')
 const Post = require('../models/post')
-
-let posts=[{
-    id:'p1',
-    title:'post 1',
-    description:'post 1 description ... ',
-    creator:'u1'
-    },{
-    id:'p2',
-    title:'post 2',
-    description:'post 2 description ... ',
-    creator:'u2'
-    },{
-    id:'p3',
-    title:'post 3',
-    description:'post 3 description ... ',
-    creator:'u2'
-    }]
+const User = require('../models/user')
 
 const getPostById = async (req, res, next) => {
     const postId = req.params.pid
@@ -65,8 +48,21 @@ const createPost = async (req, res, next) => {
         image: 'url',
         creator: creator
     })
+    let user
+    try {
+        user = await User.findById(creator)
+    } catch (err) {
+        const error = new HttpError('creating Post Failed!', 500)
+        return next(error)
+    }
+    if(!user){
+        const error = new HttpError('could not find user', 422)
+        return next(error)
+    }
     try{
         await createdPost.save()
+        user.posts.push(createdPost)
+        await user.save()
     }catch(err){
         const error = new HttpError('creating Post Failed!', 500)
         return next(error)
@@ -78,15 +74,18 @@ const deletePost = async(req, res, next) => {
     const postId = req.params.pid
     let post
     try{
-        post = await Post.findById(postId)
+        post = await Post.findById(postId).populate('creator')
     } catch(err) {
-        const error = new HttpError('Could not delete a post!', 500)
+        const error = new HttpError('Could not delete a post1!', 500)
         return next(error)
     }
     try{
         await Post.remove()
+        post.creator.posts.pull(post)
+        await post.creator.save()
     } catch(err) {
-        const error = new HttpError('Could not delete a post!', 500)
+        const error = new HttpError('Could not delete a post2!', 500)
+        console.log(error)
         return next(error)
     }
     res.status(200).json({ message: 'Post Deleted!'})

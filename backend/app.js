@@ -1,8 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+
 const postRoutes = require('./routes/posts-routes')
 const userRoutes = require('./routes/users-routes')
+
 const HttpError = require('./models/http-error')
 const app = express()
 
