@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import UsersList from '../components/UsersList';
 
 const Users =() =>{
-    const users =[{
-        id:'u1',
-        name:'مریم',
-        image:'../images/MarMar.jpeg',
-        posts: 4
-    },{
-        id:'u2',
-        name:'رضا',
-        image:'../images/BroTher.jpg',
-        posts: 7
-    }]
+    const [loadedUsers, setLoadedUsers] = useState()
+    useEffect(()=>{
+        try {
+            const sendRequest = async () => {
+                const response = await fetch('http://localhost:5000/api/users')
+                const responseData = await response.json()
+                if(!response.ok){
+                    throw new Error(responseData.message)
+                }
+                setLoadedUsers(responseData.userlist)
+            }
+            sendRequest()
+        } catch (err) {
+            console.log(err)
+        }
+    },[])
+    
     return(
-        <UsersList items={users}/>
+        <React.Fragment>
+            {loadedUsers && <UsersList items={loadedUsers}/>}
+        </React.Fragment>
     )
 }
 export default Users;
