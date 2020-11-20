@@ -6,10 +6,12 @@ import { validatorRequire } from '../../shared/util/validators'
 import { useForm } from '../../shared/hooks/from-hook'
 import Button from '../../shared/components/FormElements/Button'
 import { AuthContext } from '../../shared/context/auth-context'
+import { useHttpClient } from '../../shared/hooks/http-hook'
 
 const Auth = () => {
     const auth = useContext(AuthContext)
     const [isLoginMode, setIsLoginMode] = useState(true)
+    const { sendRequest } = useHttpClient()
     const [formState, inputHandler, setFormData] = useForm({
         email:{
             value: '',
@@ -45,42 +47,31 @@ const Auth = () => {
         //console.log(formState.inputs)
         if(isLoginMode){
             try {
-                const response = await fetch('http://localhost:5000/api/users/login', {
-                    method:'POST',
-                    headers : {
-                        'Content-Type' : 'application/json'
-                    },
-                    body : JSON.stringify({
+                await sendRequest(
+                    'http://localhost:5000/api/users/login',
+                    'POST',
+                    JSON.stringify({
                         email : formState.inputs.email.value,
                         password : formState.inputs.password.value
-                    })
-                })
-                const responseData = await response.json()
-                if(!response.ok){
-                    throw new Error(responseData.message)
-                }
+                    }),
+                    {'Content-Type' : 'application/json'}
+                )
                 auth.login() 
             } catch (err) {
                 console.log(err)
             }
         }else {
             try {
-                const response = await fetch('http://localhost:5000/api/users/signup', {
-                    method:'POST',
-                    headers : {
-                        'Content-Type' : 'application/json'
-                    },
-                    body : JSON.stringify({
+                await sendRequest(
+                    'http://localhost:5000/api/users/signup',
+                    'POST',
+                    JSON.stringify({
                         name : formState.inputs.name.value,
                         email : formState.inputs.email.value,
                         password : formState.inputs.password.value
-                    })
-                })
-                const responseData = await response.json()
-                if(!response.ok){
-                    throw new Error(responseData.message)
-                }
-                console.log(responseData)
+                    }),
+                    {'Content-Type' : 'application/json'}
+                )
                 auth.login() 
             } catch (err) {
                 console.log(err)
