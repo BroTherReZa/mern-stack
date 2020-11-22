@@ -37,6 +37,7 @@ const getPostByUserId = async (req, res, next) => {
 
 const createPost = async (req, res, next) => {
     const errors = validationResult(req)
+    //console.log(errors)
     if(!errors.isEmpty()) {
         throw new HttpError('Invalid Inputs', 422)
     }
@@ -70,17 +71,19 @@ const createPost = async (req, res, next) => {
     res.status(201).json({postsList: createdPost})
 }
 
-const deletePost = async(req, res, next) => {
+const deletePost = async (req, res, next) => {
     const postId = req.params.pid
     let post
+    // find post
     try{
         post = await Post.findById(postId).populate('creator')
     } catch(err) {
         const error = new HttpError('Could not delete a post1!', 500)
         return next(error)
     }
+    // delete post
     try{
-        await Post.remove()
+        await post.remove()
         post.creator.posts.pull(post)
         await post.creator.save()
     } catch(err) {

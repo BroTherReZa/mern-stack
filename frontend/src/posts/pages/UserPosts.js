@@ -25,9 +25,9 @@ const UserPosts = () =>{
     },[sendRequest, uid])
     
     const postDeletedHandler = (deletedPostId) =>{
-        setLoadedPosts(prevPosts => {
+        setLoadedPosts(prevPosts => 
             prevPosts.filter(post => post.id !== deletedPostId)
-        })
+        )
     }
 
     return(

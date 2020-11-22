@@ -9,13 +9,12 @@ const PostItem = props =>{
     const auth = useContext(AuthContext)
 
     const deleteHandler = async () => {
-        console.log(props.id)
+        //console.log(props.id)
         try {
             await sendRequest(
                 `http://localhost:5000/api/posts/${props.id}`,
                 'DELETE'
             )
-            console.log('test1')
             props.onDelete(props.id)
         } catch (err) {
             console.log(err)
