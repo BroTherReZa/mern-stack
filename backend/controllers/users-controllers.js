@@ -60,7 +60,7 @@ const login = async (req, res, next) => {
         const error = new HttpError('invalid input',401)
         return next(error)
     }
-    res.json({ message: ' logged in '})
+    res.json({ message: ' logged in ', user: existingUser.toObject({getters:true})})
 }
 
 exports.getUsers = getUsers

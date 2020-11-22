@@ -17,7 +17,7 @@ const NavLinks = props =>{
                 {   
                     auth.isLoggedIn && (
                         <li>
-                            <NavLink to="/u1/posts">پست های من</NavLink>
+                            <NavLink to={`/${auth.userId}/posts`}>پست های من</NavLink>
                         </li>
                     )
                 }

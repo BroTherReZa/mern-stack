@@ -2,9 +2,25 @@ import React, { useContext } from 'react'
 import './PostItem.css'
 import Button from '../../shared/components/FormElements/Button'
 import { AuthContext } from '../../shared/context/auth-context'
+import { useHttpClient } from '../../shared/hooks/http-hook'
 
 const PostItem = props =>{
+    const {sendRequest} = useHttpClient()
     const auth = useContext(AuthContext)
+
+    const deleteHandler = async () => {
+        console.log(props.id)
+        try {
+            await sendRequest(
+                `http://localhost:5000/api/posts/${props.id}`,
+                'DELETE'
+            )
+            console.log('test1')
+            props.onDelete(props.id)
+        } catch (err) {
+            console.log(err)
+        }
+    }
     return(
         <li>
             <div>
@@ -20,7 +36,7 @@ const PostItem = props =>{
             <div>
                     {
                         auth.isLoggedIn &&
-                        <Button>Remove</Button>
+                        <Button onClick={deleteHandler} >Remove</Button>
                     }
            </div>
         </li>

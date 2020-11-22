@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import UsersList from '../components/UsersList';
 
-const Users =() =>{
+const Users = () =>{
     const [loadedUsers, setLoadedUsers] = useState()
     const { sendRequest } = useHttpClient()
     useEffect(()=>{

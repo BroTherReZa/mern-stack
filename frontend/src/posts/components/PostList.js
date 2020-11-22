@@ -22,6 +22,7 @@ const PostList = props =>{
                         image={post.image}
                         description={post.description}
                         creatorId={post.creator}
+                        onDelete={props.onDeletedPost}
                         />)
                     })
                 }
