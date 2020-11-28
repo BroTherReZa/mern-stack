@@ -3,6 +3,7 @@ import './NewPost.css'
 import Input from '../../shared/components/FormElements/Input';
 import { validatorRequire } from '../../shared/util/validators';
 import Button from '../../shared/components/FormElements/Button';
+import ImageUpload from '../../shared/components/FormElements/ImageUpload'
 import { useForm } from '../../shared/hooks/from-hook';
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
@@ -21,6 +22,10 @@ const NewPost =() =>{
         description: {
             value: '',
             isValid: false
+        },
+        image: {
+            value: null,
+            isValid: false
         }
     },false)
 
@@ -29,15 +34,16 @@ const NewPost =() =>{
         event.preventDefault()
         //console.log(fromState.inputs)
         try {
+            const formData = new FormData()
+            formData.append('title', fromState.inputs.title.value)
+            formData.append('description', fromState.inputs.description.value)
+            formData.append('creator', auth.userId)
+            formData.append('image', fromState.inputs.image.value)
+
             await sendRequest(
                 'http://localhost:5000/api/posts/',
                 'POST',
-                JSON.stringify({
-                    title: fromState.inputs.title.value,
-                    description: fromState.inputs.description.value,
-                    creator: auth.userId
-                }),
-                {'Content-Type' : 'application/json'}
+                formData
             )
             history.push('/')
         } catch (err) {
@@ -65,6 +71,11 @@ const NewPost =() =>{
                 errorText= "plese Enter a valid description ... "
                 validators={[validatorRequire()]}
                 onInput={inputHandler}
+                 />
+                 <ImageUpload
+                    id="image"
+                    onInput={inputHandler}
+                    errorText="please browse a picture"
                  />
                 <Button
                     type='submit'

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 
 import './Auth.css'
 import Input from '../../shared/components/FormElements/Input'
+import ImageUpload from '../../shared/components/FormElements/ImageUpload'
 import { validatorRequire } from '../../shared/util/validators'
 import { useForm } from '../../shared/hooks/from-hook'
 import Button from '../../shared/components/FormElements/Button'
@@ -22,11 +23,13 @@ const Auth = () => {
             isValid: false
         }
     }, false)
+
     const switchModeHandler = () => {
         if(!isLoginMode){
             setFormData({
                 ...formState.inputs,
-                name: undefined
+                name: undefined,
+                image: undefined
             },
                 formState.inputs.email.isValid &&
                 formState.inputs.password.isValid
@@ -37,14 +40,19 @@ const Auth = () => {
                     name:{
                         value: '',
                         isValid: false
+                    },
+                    image: {
+                        value: null,
+                        isValid: false
                     }
                 },false)
         }
         setIsLoginMode(prevMode => !prevMode)
     }
+
     const authSubmitHandler = async event => {
         event.preventDefault()
-        //console.log(formState.inputs)
+        console.log(formState.inputs)
         if(isLoginMode){
             try {
                 const responseData = await sendRequest(
@@ -62,15 +70,16 @@ const Auth = () => {
             }
         }else {
             try {
+                const formData = new FormData()
+                formData.append('name',formState.inputs.name.value)
+                formData.append('email',formState.inputs.email.value)
+                formData.append('password',formState.inputs.password.value)
+                formData.append('image',formState.inputs.image.value)
+                
                 const responseData = await sendRequest(
                     'http://localhost:5000/api/users/signup',
                     'POST',
-                    JSON.stringify({
-                        name : formState.inputs.name.value,
-                        email : formState.inputs.email.value,
-                        password : formState.inputs.password.value
-                    }),
-                    {'Content-Type' : 'application/json'}
+                    formData 
                 )
                 auth.login(responseData.user.id) 
             } catch (err) {
@@ -91,6 +100,13 @@ const Auth = () => {
                         validators={[validatorRequire()]}
                         errorText="Enter a valid name"
                         onInput={inputHandler}
+                    />
+                }
+                {!isLoginMode && 
+                    <ImageUpload 
+                    id="image"
+                    onInput={inputHandler}
+                    errorText="ivalid image"
                     />
                 }
                 <Input 

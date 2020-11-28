@@ -23,7 +23,7 @@ const PostItem = props =>{
     return(
         <li>
             <div>
-                <img src={props.image} alt={props.title}/>
+                <img src={`http://localhost:5000/${props.image}`} alt={props.title}/>
             </div>
             <div>
                 <h1>{props.title}</h1>
