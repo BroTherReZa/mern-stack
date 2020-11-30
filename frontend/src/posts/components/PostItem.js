@@ -13,7 +13,11 @@ const PostItem = props =>{
         try {
             await sendRequest(
                 `http://localhost:5000/api/posts/${props.id}`,
-                'DELETE'
+                'DELETE',
+                null,
+                {
+                    Authorization: 'Bearer ' + auth.token
+                }
             )
             props.onDelete(props.id)
         } catch (err) {

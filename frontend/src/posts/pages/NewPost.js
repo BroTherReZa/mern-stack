@@ -43,12 +43,15 @@ const NewPost =() =>{
             await sendRequest(
                 'http://localhost:5000/api/posts/',
                 'POST',
-                formData
+                formData,
+                {
+                    Authorization: 'Bearer ' + auth.token
+                }
             )
+            console.log(auth.token)
             history.push('/')
         } catch (err) {
             console.log(err)
-            
         }
     }
     return(
