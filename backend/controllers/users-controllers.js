@@ -74,20 +74,23 @@ const signup = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     const { email, password } = req.body
+
     let existingUser
+
     try {
         existingUser = await User.findOne({email:email})
     } catch (err) {
         const error = new HttpError('login failed!',500)
         return next(error)
     }
+
     if(!existingUser){
         const error = new HttpError('invalid input',401)
         return next(error)
     }
     let isValidPassword = false
     try {
-        isValidPassword = bcrypt.compare(password, existingUser.password)
+        isValidPassword = await bcrypt.compare(password, existingUser.password)
     } catch (err) {
         const error = new HttpError('could not login',500)
         return next(error)

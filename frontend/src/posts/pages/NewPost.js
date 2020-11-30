@@ -48,7 +48,6 @@ const NewPost =() =>{
                     Authorization: 'Bearer ' + auth.token
                 }
             )
-            console.log(auth.token)
             history.push('/')
         } catch (err) {
             console.log(err)
